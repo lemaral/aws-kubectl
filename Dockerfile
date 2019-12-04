@@ -7,7 +7,7 @@ RUN apk --no-cache update && \
     ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws && \
     rm awscli-bundle.zip && \
     rm -rf awscli-bundle && \
-    rm /var/cache/apk/*
-RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
+    rm -f /var/cache/apk/*
+RUN wget "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" -O kubectl \
 	&& mv kubectl /usr/local/bin \
 	&& chmod +x /usr/local/bin/kubectl
