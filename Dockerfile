@@ -8,6 +8,7 @@ RUN apk --no-cache update && \
     rm awscli-bundle.zip && \
     rm -rf awscli-bundle && \
     rm -f /var/cache/apk/*
-RUN wget "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" -O kubectl \
+ENV KUBECTL_VERSION="v1.16.3"
+RUN wget "https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl" -O kubectl \
 	&& mv kubectl /usr/local/bin \
 	&& chmod +x /usr/local/bin/kubectl
